@@ -34,9 +34,6 @@ public class State {
 	}
 
 	public boolean isHaltState(){
-//		boolean haltState = edgeMap.containsKey("#");
-//		System.out.println("state: " + name + " isHaltState: " + haltState);
-//		System.out.println(toString());
 		return false;
 	}
 	
@@ -56,10 +53,4 @@ public class State {
 		
 		return sb.toString();
 	}
-
-	public boolean contains(String input) {
-		return edgeMap.containsKey(input);
-	}
-
-
 }

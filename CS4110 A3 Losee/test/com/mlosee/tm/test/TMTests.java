@@ -148,9 +148,9 @@ public class TMTests {
 
 		TuringMachine tm = TuringMachineFactory.createTM(args);
 		
-		assertEquals(true, tm.processData("bbaaaX"));
+//		assertEquals(true, tm.processData("bbaaa"));
 //		assertEquals(true, tm.processData("bbbaaaa"));
-//		assertEquals(true, tm.processData("bbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaa"));
+		assertEquals(true, tm.processData("bbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaa"));
 	}
 	
 }

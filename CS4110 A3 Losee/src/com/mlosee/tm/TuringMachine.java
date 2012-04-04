@@ -40,12 +40,8 @@ public class TuringMachine {
 			
 			return state.isHaltState() ? true: readNextInputFromTape(edge.getNextState());
 			
-		} catch (EdgeNotFoundException e) {
-//			e.printStackTrace();			
-		} catch (HeadCrashException e) {
-//			e.printStackTrace();			
-		} catch (InterruptedException e) {
-//			e.printStackTrace();					
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		} 
 		
 		return false;

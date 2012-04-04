@@ -18,5 +18,9 @@ public class HaltState extends State {
 	public boolean isHaltState(){
 		return true;
 	}
+	
+	public String getName(){
+		return "Halt";
+	}
 
 }
