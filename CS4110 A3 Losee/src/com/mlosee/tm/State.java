@@ -37,7 +37,7 @@ public class State {
 //		boolean haltState = edgeMap.containsKey("#");
 //		System.out.println("state: " + name + " isHaltState: " + haltState);
 //		System.out.println(toString());
-		return edgeMap.containsKey("#");
+		return "H".equals(name);
 	}
 	
 	public String toString(){

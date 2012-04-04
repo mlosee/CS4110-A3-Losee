@@ -20,9 +20,8 @@ public class Tape {
 	
 	public String readCurrentInput() throws HeadCrashException{
 		if(head >= tape.size()){
-			throw new HeadCrashException();
-		}
-		
+			tape.add("#");
+		}		
 		return tape.get(head);
 		
 	}
@@ -36,13 +35,9 @@ public class Tape {
 		
 		if(newHeadPosition + head < 0){
 			throw new HeadCrashException();
-		}
-		
-		
+		}		
 			tape.set(head, output);		
 			head = newHeadPosition;
-
-				
 	}
 	
 	public String toString(){
@@ -50,9 +45,20 @@ public class Tape {
 		for(String s : tape){
 			b.append(s);
 		}
+		b.append("\n");
+		showHeadAt(b, 7+(head-1), "^");
+		b.append("\n");
+		showHeadAt(b, 7+(head-1), "|");
 		return b.toString();
 	}
 	
+	
+	private void showHeadAt(StringBuilder b, int numberOfSpaces, String toAppend){
+		for(int i = 0; i < numberOfSpaces; i++){
+			b.append(" ");
+		}
+		b.append(toAppend);
+	}
 
 }
 
