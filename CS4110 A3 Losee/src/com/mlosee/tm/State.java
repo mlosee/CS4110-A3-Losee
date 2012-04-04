@@ -34,8 +34,9 @@ public class State {
 	}
 
 	public boolean isHaltState(){
-		boolean haltState = edgeMap.containsKey("#");
+//		boolean haltState = edgeMap.containsKey("#");
 //		System.out.println("state: " + name + " isHaltState: " + haltState);
+//		System.out.println(toString());
 		return edgeMap.containsKey("#");
 	}
 	
@@ -48,7 +49,7 @@ public class State {
 			sb.append(key);
 			sb.append(" output: ");
 			sb.append(edge.getOutput());
-			sb.append("direction: ");
+			sb.append(" direction: ");
 			sb.append(edge.getDirection().value);
 			sb.append("\n");
 		}

@@ -6,7 +6,6 @@ import com.mlosee.tm.exception.HeadCrashException;
 public class TuringMachine {
 	private Tape tape;
 	private State start;
-	private State currentState;
 	
 	public TuringMachine(State start){
 		this.start = start;
@@ -14,12 +13,6 @@ public class TuringMachine {
 	
 	public boolean processData(String input){
 		tape = new Tape(input);
-		
-		currentState = start;
-		
-//		while(!currentState.isHaltState()){
-//			
-//		}
 		
 		return readNextInputFromTape(start);
 	}
@@ -40,12 +33,12 @@ public class TuringMachine {
 			String output = edge.getOutput();
 			Direction direction = edge.getDirection();
 			
-			System.out.println("Tape: " + tape.toString());
-			printData(input, output, direction.value);
+			System.out.println("Tape: " + tape.toString() + " State: " + state.getName());
 			
 			tape.writeAndMoveHead(output, direction);
 			
 			return readNextInputFromTape(edge.getNextState());
+			
 		} catch (EdgeNotFoundException e) {
 			e.printStackTrace();
 			return false;
@@ -53,8 +46,6 @@ public class TuringMachine {
 			e.printStackTrace();
 			return false;
 		} 
-		
-//		return false;
 	}
 	
 	public void printData(String input, String output, int direction){
@@ -62,14 +53,5 @@ public class TuringMachine {
 
 		
 	}
-	
-//	catch(StackOverflowError t) {
-//        // more general: catch(Error t)
-//        // anything: catch(Throwable t)
-//        System.out.println("Caught "+t);
-//        t.printStackTrace();
-//    }
-
-	
 	
 }
