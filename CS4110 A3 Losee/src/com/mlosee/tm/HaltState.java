@@ -5,7 +5,6 @@ public class HaltState extends State {
 
 	public HaltState(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Edge getEdge(String input) {

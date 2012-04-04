@@ -1,7 +1,5 @@
 package com.mlosee.tm;
 
-import com.mlosee.tm.exception.EdgeNotFoundException;
-import com.mlosee.tm.exception.HeadCrashException;
 
 public class TuringMachine {
 	private Tape tape;
@@ -21,9 +19,7 @@ public class TuringMachine {
 	 * Causes a state transition.
 	 */
 	private boolean readNextInputFromTape(State state){
-//		if(state.isHaltState() ){
-//			return true;
-//		}	
+		System.out.println("Tape: " + tape.toString() + " State: " + state.getName());
 		
 		try {
 			String input = tape.readCurrentInput();
@@ -32,13 +28,11 @@ public class TuringMachine {
 			String output = edge.getOutput();
 			Move direction = edge.getDirection();
 			
-			Thread.sleep(50);
-			
+//			Thread.sleep(40);
 			
 			tape.writeAndMoveHead(output, direction);
-			System.out.println("Tape: " + tape.toString() + " State: " + state.getName());
 			
-			return state.isHaltState() ? true: readNextInputFromTape(edge.getNextState());
+			return state.isHaltState() ? true : readNextInputFromTape(edge.getNextState());
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -46,13 +40,4 @@ public class TuringMachine {
 		
 		return false;
 	}
-	
-	
-	
-	public void printData(String input, String output, int direction){
-		System.out.println("input: " + input + " output: " + output + " direction: " + direction);
-
-		
-	}
-	
 }
