@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 public enum Direction {
-	L(-1), R(1);
+	LEFT(-1), RIGHT(1);
 	public final int value;
 	Direction(int value){
 		this.value = value;
@@ -20,7 +20,7 @@ public enum Direction {
 	
 	static {
 		for(Direction d : values()){
-			stringToEnum.put(d.toString(), d);
+			stringToEnum.put(d.toString().substring(0, 1), d);
 		}
 	}
 	

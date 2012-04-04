@@ -21,9 +21,9 @@ public class TuringMachine {
 	 * Causes a state transition.
 	 */
 	private boolean readNextInputFromTape(State state){
-		if(state.isHaltState() ){
-			return true;
-		}	
+//		if(state.isHaltState() ){
+//			return true;
+//		}	
 		
 		try {
 			String input = tape.readCurrentInput();
@@ -38,7 +38,7 @@ public class TuringMachine {
 			tape.writeAndMoveHead(output, direction);
 			System.out.println("Tape: " + tape.toString() + " State: " + state.getName());
 			
-			return readNextInputFromTape(edge.getNextState());
+			return state.isHaltState() ? true: readNextInputFromTape(edge.getNextState());
 			
 		} catch (EdgeNotFoundException e) {
 //			e.printStackTrace();			
