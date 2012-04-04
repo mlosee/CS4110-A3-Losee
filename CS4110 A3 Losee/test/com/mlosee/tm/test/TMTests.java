@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.mlosee.tm.Direction;
+import com.mlosee.tm.Move;
 import com.mlosee.tm.State;
 import com.mlosee.tm.Tape;
 import com.mlosee.tm.TuringMachine;
@@ -17,35 +17,35 @@ public class TMTests {
 	@Test(expected=HeadCrashException.class)
 	public void testTape() throws HeadCrashException {
 		Tape crashTape = new Tape("aaba");
-		crashTape.writeAndMoveHead("a", Direction.LEFT);
-		crashTape.writeAndMoveHead("a", Direction.LEFT);
+		crashTape.writeAndMoveHead("a", Move.LEFT);
+		crashTape.writeAndMoveHead("a", Move.LEFT);
 		
 		Tape tape = new Tape("aaba");		
 		assertEquals("a", tape.readCurrentInput());
 		
-		tape.writeAndMoveHead("b", Direction.RIGHT);
+		tape.writeAndMoveHead("b", Move.RIGHT);
 		assertEquals("#baba", tape.toString());		
 		assertEquals("a", tape.readCurrentInput());
-		tape.writeAndMoveHead("b", Direction.RIGHT);
+		tape.writeAndMoveHead("b", Move.RIGHT);
 		assertEquals("#bbba", tape.toString());	
 		
-		tape.writeAndMoveHead("a", Direction.RIGHT);
-		tape.writeAndMoveHead("b", Direction.RIGHT);
-		tape.writeAndMoveHead("a", Direction.RIGHT);
-		tape.writeAndMoveHead("a", Direction.LEFT);
+		tape.writeAndMoveHead("a", Move.RIGHT);
+		tape.writeAndMoveHead("b", Move.RIGHT);
+		tape.writeAndMoveHead("a", Move.RIGHT);
+		tape.writeAndMoveHead("a", Move.LEFT);
 		
-		tape.writeAndMoveHead("a", Direction.RIGHT);
-		tape.writeAndMoveHead("a", Direction.RIGHT);
-		tape.writeAndMoveHead("a", Direction.RIGHT);
-		tape.writeAndMoveHead("b", Direction.RIGHT);
-		tape.writeAndMoveHead("b", Direction.RIGHT);
+		tape.writeAndMoveHead("a", Move.RIGHT);
+		tape.writeAndMoveHead("a", Move.RIGHT);
+		tape.writeAndMoveHead("a", Move.RIGHT);
+		tape.writeAndMoveHead("b", Move.RIGHT);
+		tape.writeAndMoveHead("b", Move.RIGHT);
 		assertEquals("#bbababb", tape.toString());	
 	}
 
 	@Test
 	public void testGetByValue() {
-		assertEquals(Direction.getByValue("L").value, -1);
-		assertEquals(Direction.getByValue("R").value, 1);
+		assertEquals(Move.getByValue("L").value, -1);
+		assertEquals(Move.getByValue("R").value, 1);
 	}
 	
 	@Test(expected=EdgeNotFoundException.class)
@@ -54,8 +54,8 @@ public class TMTests {
 		State state1 = new State("1");
 		
 		
-		state0.putEdge("a", "b", Direction.RIGHT, state1);
-		state0.putEdge("a", "b", Direction.RIGHT, state1);
+		state0.putEdge("a", "b", Move.RIGHT, state1);
+		state0.putEdge("a", "b", Move.RIGHT, state1);
 		
 		assertEquals("exception!!!", state0.getEdge("zzz").getInput());
 		assertEquals("a", state0.getEdge("a").getInput());

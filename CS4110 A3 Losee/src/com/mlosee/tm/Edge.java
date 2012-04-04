@@ -4,9 +4,9 @@ public class Edge {
 	
 	private String input, output;	
 	private State nextState;
-	private Direction direction;
+	private Move direction;
 	
-	public Edge(String input, String output,  Direction direction, State nextState) {		
+	public Edge(String input, String output,  Move direction, State nextState) {		
 		this.input = input;
 		this.output = output;
 		this.nextState = nextState;
@@ -31,10 +31,10 @@ public class Edge {
 	public void setNextState(State nextState) {
 		this.nextState = nextState;
 	}
-	public Direction getDirection() {
+	public Move getDirection() {
 		return direction;
 	}
-	public void setDirection(Direction direction) {
+	public void setDirection(Move direction) {
 		this.direction = direction;
 	}
 }

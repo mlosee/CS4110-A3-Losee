@@ -9,22 +9,22 @@ import java.util.Map;
  *
  */
 
-public enum Direction {
+public enum Move {
 	LEFT(-1), RIGHT(1);
 	public final int value;
-	Direction(int value){
+	Move(int value){
 		this.value = value;
 	}
 	
-	private static final Map<String, Direction> stringToEnum =  new HashMap<String, Direction>();
+	private static final Map<String, Move> stringToEnum =  new HashMap<String, Move>();
 	
 	static {
-		for(Direction d : values()){
+		for(Move d : values()){
 			stringToEnum.put(d.toString().substring(0, 1), d);
 		}
 	}
 	
-	public static Direction getByValue(String value){
+	public static Move getByValue(String value){
 		return stringToEnum.get(value);
 	}
 }

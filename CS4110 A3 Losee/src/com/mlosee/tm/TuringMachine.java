@@ -30,7 +30,7 @@ public class TuringMachine {
 			
 			Edge edge = state.getEdge(input);
 			String output = edge.getOutput();
-			Direction direction = edge.getDirection();
+			Move direction = edge.getDirection();
 			
 			Thread.sleep(50);
 			

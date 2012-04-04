@@ -13,7 +13,7 @@ public class TuringMachineFactory {
 			String stateName = arg[0];
 			String input = arg[1].split("=>")[0];
 			String output = arg[1].split("=>")[1];
-			Direction direction = Direction.getByValue(arg[2]);
+			Move direction = Move.getByValue(arg[2]);
 			State nextState = getState(stateMap, arg[3]);
 			
 			State state = getState(stateMap, stateName);
@@ -26,7 +26,12 @@ public class TuringMachineFactory {
 	
 	private static State getState(Map<String, State> stateMap, String key){
 		if(!stateMap.containsKey(key)){
-			stateMap.put(key, new State(key));
+			if("H".equals(key)){
+				stateMap.put(key, new HaltState(key));
+			} else {
+				stateMap.put(key, new State(key));
+			}
+			
 		}
 		
 		return stateMap.get(key);

@@ -30,7 +30,7 @@ public class Tape {
 		return head == tape.size();
 	}
 	
-	public void writeAndMoveHead(String output, Direction direction) throws HeadCrashException {
+	public void writeAndMoveHead(String output, Move direction) throws HeadCrashException {
 		int newHeadPosition = (head + direction.value);
 		
 		if(newHeadPosition + head < 0){

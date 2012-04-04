@@ -12,7 +12,7 @@ import com.mlosee.tm.exception.EdgeNotFoundException;
  */
 public class State {
 	private String name;
-	private Map<String, Edge> edgeMap = new HashMap<String, Edge>();
+	protected Map<String, Edge> edgeMap = new HashMap<String, Edge>();
 	
 	public State(String name){
 		this.name = name;
@@ -22,7 +22,7 @@ public class State {
 		return name;
 	}
 	
-	public void putEdge(String input, String output, Direction direction, State nextState){
+	public void putEdge(String input, String output, Move direction, State nextState){
 		edgeMap.put(input, new Edge(input, output, direction, nextState));
 	}
 		
@@ -37,7 +37,7 @@ public class State {
 //		boolean haltState = edgeMap.containsKey("#");
 //		System.out.println("state: " + name + " isHaltState: " + haltState);
 //		System.out.println(toString());
-		return "H".equals(name);
+		return false;
 	}
 	
 	public String toString(){
