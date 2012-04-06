@@ -1,5 +1,6 @@
 package com.mlosee.tm.test;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -64,129 +65,167 @@ public class TMTests {
 		assertEquals(state1.isHaltState(), true);	
 	}
 	
-//	@Test
-//	public void testFactory(){
-//		String[] args =
-//		      {"0,a=>a,R,1",
-//			       "0,b=>b,R,1",
-//			       "1,b=>b,R,2",
-//			       "2,a=>a,R,2",
-//			       "2,b=>b,R,2",
-//			       "2,#=>#,R,H"};
-//
-//		TuringMachine tm = TuringMachineFactory.createTM(args);
-//		assertEquals(false, tm.processData("ba"));
-//		assertEquals(false, tm.processData("baa"));
-//		assertEquals(false, tm.processData("bab"));
-//		assertEquals(true, tm.processData("bbbb"));
-//		assertEquals(true, tm.processData("abaaaaaaaaaaaaaaaaa"));
-//	}
-//
-//	@Test
-//	public void testFactory2(){
-//		String[] args  =
-//		      {"0,a=>A,R,1",
-//		       "1,a=>a,R,1",
-//		       "1,B=>B,R,1",
-//		       "1,b=>B,L,2",
-//		       "2,a=>a,L,3",
-//		       "2,B=>B,L,2",
-//		       "2,A=>A,R,4",
-//		       "3,a=>a,L,3",
-//		       "3,A=>A,R,0",
-//		       "4,B=>B,R,4",
-//		       "4,#=>#,R,H"};
-//
-//		TuringMachine tm = TuringMachineFactory.createTM(args);
-//		assertEquals(false, tm.processData("aaabb"));
-//		assertEquals(false, tm.processData("bbaa"));
-//		assertEquals(false, tm.processData("aabbb"));
-//		assertEquals(true, tm.processData("ab"));
-//		assertEquals(true, tm.processData("aabb"));
-//		assertEquals(true, tm.processData("aaaabbbb"));
-//	}
-//	
-//	@Test
-//	public void testLanguage1(){
-//		String[] args  =
-//		      {"0,a=>a,R,0",
-//			   "0,b=>b,R,1",		       
-//			   "1,a=>a,R,0",
-//			   "1,b=>b,R,2",		       
-//		       "2,a=>a,R,0",
-//		       "2,b=>b,R,H"};
-//
-//		TuringMachine tm = TuringMachineFactory.createTM(args);
-//		assertEquals(false, tm.processData("abba"));
-//		assertEquals(true, tm.processData("abbba"));
-//		assertEquals(false, tm.processData("bbababb"));
-//		assertEquals(true, tm.processData("babbbb"));
-//		assertEquals(true, tm.processData("aaabbbXX"));		
-//	}
-//	
-//	@Test
-//	public void testLanguage2(){
-//		
-//		String[] args  =
-//		      {"0,b=>B,R,1",
-//		       "1,b=>b,R,1",
-//		       "1,A=>A,R,1",
-//		       "1,a=>A,L,2",
-//		       "2,b=>b,L,3",
-//		       "2,A=>A,L,2",
-//		       "2,B=>B,R,4",
-//		       "3,b=>b,L,3",
-//		       "3,B=>B,R,0",
-//		       "4,A=>A,R,4",
-//		       "4,a=>A,R,H"};
-//
-//		TuringMachine tm = TuringMachineFactory.createTM(args);
-//		
-//		assertEquals(true, tm.processData("bbaaa"));
-//		assertEquals(true, tm.processData("bbbaaaa"));
-//		assertEquals(true, tm.processData("bbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaa"));
-//	}
+	@Test
+	public void testFactory(){
+		String[] args =
+		      {"0,a=>a,R,1",
+			       "0,b=>b,R,1",
+			       "1,b=>b,R,2",
+			       "2,a=>a,R,2",
+			       "2,b=>b,R,2",
+			       "2,#=>#,R,H"};
+
+		TuringMachine tm = TuringMachineFactory.createTM(args);
+		assertFalse(tm.processData("ba"));
+		assertFalse(tm.processData("baa"));
+		assertFalse(tm.processData("bab"));
+		assertTrue(tm.processData("bbbb"));
+		assertTrue(tm.processData("abaaaaaaaaaaaaaaaaa"));
+	}
+
+	@Test
+	public void testFactory2(){
+		String[] args  =
+		      {"0,a=>A,R,1",
+		       "1,a=>a,R,1",
+		       "1,B=>B,R,1",
+		       "1,b=>B,L,2",
+		       "2,a=>a,L,3",
+		       "2,B=>B,L,2",
+		       "2,A=>A,R,4",
+		       "3,a=>a,L,3",
+		       "3,A=>A,R,0",
+		       "4,B=>B,R,4",
+		       "4,#=>#,R,H"};
+
+		TuringMachine tm = TuringMachineFactory.createTM(args);
+		assertFalse(tm.processData("aaabb"));
+		assertFalse(tm.processData("bbaa"));
+		assertFalse(tm.processData("aabbb"));
+		assertTrue(tm.processData("ab"));
+		assertTrue(tm.processData("aabb"));
+		assertTrue(tm.processData("aaaabbbb"));
+	}
+	
+	@Test
+	public void testLanguage1(){
+		String[] args  =
+		      {"0,a=>a,R,0",
+			   "0,b=>b,R,1",		       
+			   "1,a=>a,R,0",
+			   "1,b=>b,R,2",		       
+		       "2,a=>a,R,0",
+		       "2,b=>b,R,H"};
+
+		TuringMachine tm = TuringMachineFactory.createTM(args);
+		assertFalse(tm.processData("abba"));
+		assertTrue(tm.processData("abbba"));
+		assertFalse(tm.processData("bbababb"));
+		assertTrue(tm.processData("babbbb"));
+		assertTrue(tm.processData("aaabbbXX"));		
+	}
+	
+	@Test
+	public void testLanguage2(){
+		
+		String[] args  =
+		      {"0,b=>B,R,1",
+		       "1,b=>b,R,1",
+		       "1,A=>A,R,1",
+		       "1,a=>A,L,2",
+		       "2,b=>b,L,3",
+		       "2,A=>A,L,2",
+		       "2,B=>B,R,4",
+		       "3,b=>b,L,3",
+		       "3,B=>B,R,0",
+		       "4,A=>A,R,4",
+		       "4,a=>A,R,H"};
+
+		TuringMachine tm = TuringMachineFactory.createTM(args);
+		
+		assertTrue(tm.processData("baa"));
+		assertFalse(tm.processData("bbbaa"));
+		assertTrue(tm.processData("bbaaaa"));
+		assertFalse(tm.processData("bbaabb"));
+		assertTrue(tm.processData("bbaaa"));
+	}
 	
 	@Test
 	public void testLanguage3(){
 		
 		String[] args  =
 		      {"0,x=>X,R,1",
-			   "0,y=>Y,R,5",	
-			   "0,X=>X,R,H",
-			   "0,Y=>Y,R,H",
-		       "1,x=>x,R,1",
-		       "1,y=>y,R,1",
-		       "1,#=>#,L,3",
-		       "1,X=>X,L,3",
-		       "1,Y=>Y,L,3",
-		       "3,x=>X,L,4",
-		       "4,X=>X,L,4",
-		       "4,Y=>Y,L,4",
-		       "4,x=>x,L,0",
-		       "4,y=>Y,R,0",
-
-		       "5,y=>y,R,5",
-		       "5,x=>x,R,5",
-		       "5,#=>#,L,6",
-		       "5,X=>X,L,6",
-		       "5,Y=>Y,L,6",
-		       "6,y=>Y,L,7",
-		       "7,X=>X,L,7",
-		       "7,Y=>Y,L,7",
-		       "7,y=>Y,R,0",
-		       "7,x=>X,R,0",
-		       
+			   "0,y=>Y,R,4",
+			   "4,y=>y,R,4",
+			   "4,x=>x,R,4",
+			   "4,X=>X,R,4",
+			   "4,Y=>Y,R,4",
+			   "4,#=>#,L,5",
+			   "5,X=>X,L,5",
+			   "5,Y=>Y,L,5",
+			   "5,y=>Y,L,3",
+			   "5,x=>X,R,6",
+			   "5,#=>#,R,H",
+			   "1,x=>x,R,1",
+			   "1,X=>X,R,1",
+			   "1,y=>y,R,1",
+			   "1,Y=>Y,R,1",
+			   "1,#=>#,L,2",
+			   "2,X=>X,L,2",
+			   "2,Y=>Y,L,2",
+			   "2,x=>X,L,3",
+			   "2,y=>y,R,6",
+			   "2,#=>#,R,H",
+			   "3,x=>x,L,3",
+			   "3,y=>y,L,3",
+			   "3,X=>X,R,0",
+			   "3,Y=>Y,R,0",
+			   "3,#=>#,R,H",
+			   "6,X=>X,R,H",
+			   "6,Y=>Y,R,H",
 		       };
-//		xyx,  yxxy,  xxyxx,  xyyxy,  yxyxyxy
+		
 		TuringMachine tm = TuringMachineFactory.createTM(args);
 		
-		assertEquals(true, tm.processData("xyx"));
-		assertEquals(false, tm.processData("yxxy"));
-		assertEquals(true, tm.processData("xxyxx"));
-		assertEquals(false, tm.processData("xyyxy"));
-		assertEquals(true, tm.processData("yxyxyxy"));
+		assertTrue(tm.processData("xyx"));
+		assertFalse(tm.processData("yxxy"));
+		assertTrue(tm.processData("xxyxx"));
+		assertFalse(tm.processData("xyyxy"));
+		assertTrue(tm.processData("yxyxyxy"));
+	}
+	
+	@Test
+	public void testLanguage4(){
+		
+				
+			String[] args  =
+			      {"0,q=>Q,R,1",
+			       "1,q=>q,R,1",
+			       "1,P=>P,R,1",
+			       "1,p=>P,R,4",
+			       "2,p=>p,L,2",
+			       "2,q=>q,L,3",
+			       "2,P=>P,L,2",
+			       "2,Q=>Q,R,H",
+			       "3,q=>q,L,3",
+			       "3,Q=>Q,R,0",
+			       "4,p=>p,R,4",
+			       "4,Q=>Q,R,4",
+			       "4,q=>Q,L,5",
+			       "5,Q=>Q,L,5",
+			       "5,p=>p,L,2",
+			       "5,P=>P,L,2"};
+
+		TuringMachine tm = TuringMachineFactory.createTM(args);
+		
+		assertTrue(tm.processData("qpq"));
+		assertFalse(tm.processData("qqpqq"));
+		assertFalse(tm.processData("qqppq"));
+		assertTrue(tm.processData("qqppqq"));
+		assertTrue(tm.processData("qqppqqq"));
 		
 	}
 	
 }
+
+

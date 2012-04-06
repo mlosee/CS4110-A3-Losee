@@ -28,7 +28,7 @@ public class TuringMachine {
 			String output = edge.getOutput();
 			Move direction = edge.getDirection();
 			
-//			Thread.sleep(40);
+//			Thread.sleep(90);
 			
 			tape.writeAndMoveHead(output, direction);
 			
